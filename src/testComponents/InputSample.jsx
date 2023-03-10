@@ -26,18 +26,16 @@ function InputSample() {
           helperText="Error"
           pre="Pre"
           post="Post"
-          maxLength={100}
-          charLimit={10}
+          maxLength={10}
         />
 
         <Input
           labelName="Nombre"
-          inputStyle="box"
+          inputStyle="line"
           tip="Nombre"
-          pre="Pre"
-          post="Post"
-          maxLength={100}
-          charLimit={10}
+          pre="Different Pre"
+          post="Another Post"
+          maxLength={24}
         />
 
         <Input
@@ -72,7 +70,7 @@ function InputSample() {
 
         <Input
           labelName="Pass"
-          inputType="password"
+          type="password"
         />
     </Card>
     </>
