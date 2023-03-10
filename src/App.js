@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import {ThemeProvider} from "styled-components";
+
+import ButtonSample from "./testComponents/ButtonSample";
+import InputSample from "./testComponents/InputSample";
+
+import {blueTheme, orangeTheme} from "./style/themes.js";
+import GlobalStyle from "./style/globalStyle.js";
+
+
+import Login from "./screens/Login";
 
 function App() {
+  const [bool, setBool] = useState(false);
+
+  function toggleTheme() {
+    setBool(prevVal => !prevVal);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={bool ? blueTheme : orangeTheme}>
+      <GlobalStyle /> 
+      {/*
+        <ButtonSample />
+        <InputSample />
+      */}
+        <Login toggleTheme={toggleTheme} />
+    </ThemeProvider>
   );
 }
 
