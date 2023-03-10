@@ -133,8 +133,8 @@ export const Title = styled(Text)`
 export const TopFooterSection = styled(FooterSection)`
     border-bottom: 1px solid white;
     flex: 1;
-    margin-top: 80px;
-    padding: 30px 0;
+    justify-content: center;
+    padding-top: 80px;
     text-align: center;
 
     @media (max-width: ${({theme}) => theme.mobile}) {

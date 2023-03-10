@@ -9,6 +9,7 @@ export const TopInfoContainer = styled(SectionContainer)`
 `;
 
 export const InputLabel = styled(Text)`
+    font-size: ${({theme}) => theme.fs_small};
     margin-right: 4px;
 `; 
 

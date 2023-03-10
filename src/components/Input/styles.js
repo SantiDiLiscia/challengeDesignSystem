@@ -17,6 +17,7 @@ export const BottomInfoContainer = styled(SectionContainer)`
 `;
 
 export const InfoText = styled(Text)`
+    font-size: ${({theme}) => theme.fs_small};
     color: ${({theme}) => theme.black60};
 `;
 

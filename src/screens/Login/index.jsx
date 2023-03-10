@@ -85,10 +85,10 @@ function Login({toggleTheme}) {
             <FooterContainer>
                 <TopFooterSection>
                     <FooterText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam in urna pellentesque euismod ultricies neque velit.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </FooterText>
                     <FooterText>
-                        Maecenas aliquam in urna pellentesque euismod ultricies neque velit.
+                        Maecenas aliquam in urna pellentesque euismod. Etiam ultricies neque velit
                     </FooterText>
                 </TopFooterSection>
                 <FooterSection>
