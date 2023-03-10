@@ -6,10 +6,12 @@ import {
     CharCount,
 } from "./styles";
 
-function BottomInfo({helperText, inputStatus, inputVal = "", charLimit, errorMsg}) {
+function BottomInfo({helperText, inputStatus, inputVal = "", maxLength, errorMsg}) {
     const [chars, setChars] = useState(inputVal.length);
 
-    useEffect(() => {setChars(inputVal.length)}, [inputVal])
+    useEffect(() => {
+        setChars(inputVal.length);
+    }, [inputVal]);
 
     return (
         <BottomInfoContainer>
@@ -17,8 +19,8 @@ function BottomInfo({helperText, inputStatus, inputVal = "", charLimit, errorMsg
                 ? <ErrorText>{errorMsg}</ErrorText>
                 :  <HelperText>{helperText}</HelperText>
             }
-            {charLimit
-                ? <CharCount>{`${chars}/${charLimit}`}</CharCount>
+            {maxLength
+                ? <CharCount>{`${chars}/${maxLength}`}</CharCount>
                 : null
             }
         </BottomInfoContainer>

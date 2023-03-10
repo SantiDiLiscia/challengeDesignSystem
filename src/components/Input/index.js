@@ -14,36 +14,41 @@ const {
 
 function InputComponent(props) {
   const {
-    charLimit,
-    disabled: isDisabled,
+    maxLength,
+    disabled,
+    readOnly,
     errorMsg,
     helperText,
     inputStyle,
-    inputType,
+    type,
     labelName,
-    name: inputName,
+    name,
     onBlur,
     onChange,
     onDelete,
     placeholder,
     post,
     pre,
-    readOnly: isReadOnly,
     startingStatus,
     tip,
-    value: inputValProps,
+    value = "",
+    ...restOfProps
   } = props;
     const [inputVal, setInputVal] = useState("");
     const [inputStatus, setInputStatus] = useState(startingStatus);
 
     useEffect(() => {
-      if (isDisabled) {
+      if (disabled) {
         setInputStatus(DISABLED)
-      } else if (isReadOnly) {
+      } else if (readOnly) {
         setInputStatus(READ_ONLY)
       };
 
-    }, [isDisabled, isReadOnly]);
+    }, [disabled, readOnly]);
+
+    useEffect(() => {
+      setInputVal(value);
+    }, [value])
 
     function handleFocus() {
       setInputStatus(ACTIVE);
@@ -51,20 +56,18 @@ function InputComponent(props) {
 
     function handleBlur(e) {
       setInputStatus(RESTING);
-
       if(typeof onBlur === 'function') onBlur(e);
     };
 
-    function delInputVal() {
+    function handleDelete(e) {
+        e.preventDefault();
         setInputVal("");
-
-        if(typeof onDelete === 'function') onDelete(inputName);
+        if(typeof onDelete === 'function') onDelete(name);
     };
 
     function handleChange(e) {
         const {target} = e || {};
         const {value = ""} = target;
-
         setInputVal(value)
         if(typeof onChange === 'function') onChange(e);
     };
@@ -77,10 +80,10 @@ function InputComponent(props) {
           }} />
 
         <TextInput 
-        {...props}
+        {...restOfProps}
         {...{
-            inputName,
-            inputType,
+            name,
+            type,
             inputStatus,
             inputStyle,
             onBlur: handleBlur,
@@ -89,10 +92,10 @@ function InputComponent(props) {
             placeholder,
             post,
             pre,
-            charLimit,
-            delInputVal,
-            disabled: (isDisabled || isReadOnly),
-            value: (inputValProps ? inputValProps : inputVal),
+            maxLength,
+            handleDelete,
+            disabled: (disabled || readOnly),
+            value: inputVal,
         }}
         />
 
@@ -101,7 +104,7 @@ function InputComponent(props) {
           errorMsg,
           inputVal, 
           inputStatus,
-          charLimit
+          maxLength
         }}/>
 
     </Label>

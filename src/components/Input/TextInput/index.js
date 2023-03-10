@@ -1,74 +1,66 @@
 import {useState} from "react";
 
 import {
-    TextInputContainer, 
-    PreLabel, 
+    ClearButton,
+    EyeIcon,
     MainLabelText,
     PostLabel,
+    PreLabel,
     StatusIconContainer,
-    EyeIcon,
-    ClearButton
+    TextInputContainer
 } from "./styles";
 
 import StatusIcon from "./StatusIcon";
 
 function TextInputComponent(props) {
     const {
-        inputName,
-        inputType = "text",
+        handleDelete,
+        disabled,
+        inputStatus,
         inputStyle,
+        maxLength,
+        name,
         onBlur,
         onChange,
         onFocus,
         placeholder,
         post,
         pre,
-        delInputVal,
-        disabled,
-        charLimit: maxLength,
-        inputStatus,
+        type: startingType,
+        ...restOfProps
     } = props;
-    const [pasVis, setPasVis] = useState(inputType);
 
-    function togglePasVis(e) {
+    const [type, setType] = useState(startingType);
+
+    function togglePassVis(e) {
         e.preventDefault();
-        setPasVis(prevVal => prevVal === "text" ? "password" : "text");
+        setType(prevVal => prevVal === "text" ? "password" : "text");
     };
-
-    function handleDel(e) {
-        e.preventDefault();
-        delInputVal();
-    }
 
     return (
         <TextInputContainer {...{inputStyle, inputStatus}}>
             {pre && <PreLabel>{pre}</PreLabel>}
             <MainLabelText 
-                {...props}
-                type={pasVis}
-                autocomplete="false"
-                list="autocompleteOff" 
-                name={inputName}
+                {...restOfProps}
                 {...{
                     disabled,
                     maxLength,
+                    name,
                     onBlur,
                     onChange,
                     onFocus,
-                    placeholder
+                    placeholder,
+                    type,
                 }} 
             />
             {post && <PostLabel>{post}</PostLabel>}
             <StatusIconContainer >
-                {inputType === "password" && 
+                {startingType === "password" &&
                 <ClearButton>
-                    <EyeIcon 
-                    onMouseDown={togglePasVis}
-                    />
-                </ClearButton>
-                }
+                    <EyeIcon onMouseDown={togglePassVis} />
+                </ClearButton>}
                 <ClearButton>
-                    <StatusIcon {...{inputStatus, handleDel}} />
+                    <StatusIcon {...{inputStatus, handleDelete}} />
                 </ClearButton>
             </StatusIconContainer>
         </TextInputContainer>

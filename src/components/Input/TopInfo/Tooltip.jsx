@@ -2,8 +2,7 @@ import {useState} from "react";
 import { ReactComponent as TooltipIcon } from "../../../assets/icons/info.svg";
 import {TooltipContainer, TipContainer} from "./styles";
 
-function Tooltip(props) {
-  const {message = null} = props;
+function Tooltip({message = null}) {
 
   const [showTip, setShowTip] = useState(false);
 
