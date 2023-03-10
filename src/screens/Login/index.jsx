@@ -30,7 +30,7 @@ function Login({toggleTheme}) {
 
         setFormData(currentData => ({
             ...currentData,
-            [name]: value.toUpperCase()
+            [name]: value
         }));
     };
 
