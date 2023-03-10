@@ -21,6 +21,7 @@ const fontWeights = {
 };
 
 const fontSizes = {
+  fs_verySmall: "0.5rem",
   fs_small: "0.875rem",
   fs_normal: "1rem",
   fs_big: "1.125rem",

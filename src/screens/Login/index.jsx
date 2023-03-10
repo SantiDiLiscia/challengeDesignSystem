@@ -30,7 +30,7 @@ function Login({toggleTheme}) {
 
         setFormData(currentData => ({
             ...currentData,
-            [name]: value
+            [name]: value.toUpperCase()
         }));
     };
 
@@ -68,7 +68,7 @@ function Login({toggleTheme}) {
                         <CardInput
                             errorMsg="Error"
                             inputStyle="box"
-                            inputType="password"
+                            type="password"
                             labelName="Password"
                             name="pass"
                             onChange={handleChange}

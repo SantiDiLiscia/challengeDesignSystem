@@ -23,10 +23,13 @@ export const Card = styled(CardOriginal)`
     justify-self: center;
     width: 345px;
 
-    @media (max-width: ${({theme}) => theme.mobile}) {
-        padding: 12px 16px;
-        grid-row: 4 / 10;
-        width: 90vw;
+    @media (max-width: ${({theme}) => theme.tablet}) {
+        width: 225px;
+        @media (max-width: ${({theme}) => theme.mobile}) {
+            padding: 12px 16px;
+            grid-row: 4 / 10;
+            width: min(200px, 90vw);
+        }
     }
 `;
 
@@ -73,8 +76,12 @@ export const FooterSection = styled(CenteredContainer)`
 export const FooterText = styled(Text)`
     color: ${({theme}) => theme.white100};
 
-    @media (max-width: ${({theme}) => theme.mobile}) {
-        font-size: ${({theme}) => theme.fs_small}
+    @media(max-width: ${({theme}) => theme.tablet}) {
+        font-size: ${({theme}) => theme.fs_small};
+
+        @media (max-width: ${({theme}) => theme.mobile}) {
+            font-size: ${({theme}) => theme.fs_verySmall};
+        }
     }
 `;
 
@@ -93,11 +100,19 @@ export const LoginContainer = styled.div`
     }
 `;
 
+    // max-width: 250px;
+    // min-width: 140px;
 export const Logo = styled(LogoOriginal)`
     height: auto;
-    max-width: 250px;
-    min-width: 140px;
-    width: 35vw;
+    width: 220px;
+
+    @media (max-width: ${({theme}) => theme.tablet}) {
+        width: 180px;
+
+        @media (max-width: ${({theme}) => theme.mobile}) {
+            width: 140px;
+        }
+    }
 `
 
 export const LogoContainer = styled(CenteredContainer)`
@@ -137,9 +152,4 @@ export const TopFooterSection = styled(FooterSection)`
     padding-top: 80px;
     text-align: center;
 
-    @media (max-width: ${({theme}) => theme.mobile}) {
-        padding-top: 0;
-        padding-bottom: 80px;
-        justify-content: center;
-    }
 `;
